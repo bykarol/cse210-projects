@@ -29,7 +29,7 @@ class Program
         string playAgain = Console.ReadLine();
         if (playAgain == "yes")
         {
-          magicNum = randomGenerator.Next(1, 11);
+          magicNum = randomGenerator.Next(1, 101);
           counter = 0;
         }
         else
