@@ -12,6 +12,7 @@ class Program
     Random randomGenerator = new Random();
     int magicNum = randomGenerator.Next(1, 11);
     int guessNum;
+    int counter = 0;
     do
     {
       Console.Write("What is your guess? ");
@@ -30,7 +31,9 @@ class Program
       {
         Console.WriteLine("Higher");
       }
+      counter++;
     } while (magicNum != guessNum);
+    Console.WriteLine($"You made {counter} attemps.");
 
 
 
