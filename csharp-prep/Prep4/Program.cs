@@ -58,6 +58,25 @@ class Program
     }
     //Finding the largest number with Linq Library
     // largestNum = numbers.Max();
-    Console.WriteLine($"The largest num is: {maxNum}");
+    Console.WriteLine($"The largest number is: {maxNum}");
+
+    //Finding the smallest POSITIVE number with Linq
+    int minNum = numbers.Where(x => x > 0).Min();
+
+    //Finding the smallest number
+    // int minNum = 0;
+    // for (int k = 0; k < listSize; k++)
+    // {
+    //   int num2 = numbers[k];
+    //   if (num2 > minNum)
+    //   {
+    //     num2 = minNum;
+    //   }
+    //   else
+    //   {
+    //     minNum = num2;
+    //   }
+    // }
+    Console.WriteLine($"The smallest positive number is: {minNum}");
   }
 }
