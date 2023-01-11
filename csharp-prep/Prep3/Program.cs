@@ -4,7 +4,7 @@ class Program
 {
   static void Main(string[] args)
   {
-    Console.WriteLine("Hello Prep3 World!");
+    Console.WriteLine("Prep3 Loops");
     Console.WriteLine("*************************");
     // Console.Write("What is the magic number? ");
     // string userInput = Console.ReadLine();

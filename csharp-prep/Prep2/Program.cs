@@ -4,7 +4,7 @@ class Program
 {
   static void Main(string[] args)
   {
-    Console.WriteLine("Hello Prep2 World!");
+    Console.WriteLine("Prep2 Conditional");
     Console.WriteLine("*******************");
 
     Console.Write("Please write your grade percent: ");
