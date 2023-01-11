@@ -1,5 +1,5 @@
 using System;
-using System.Linq; //library that contain math functions
+// using System.Linq; //library that contain math functions I didn't write because is inside system (above)
 
 class Program
 {
@@ -78,5 +78,13 @@ class Program
     //   }
     // }
     Console.WriteLine($"The smallest positive number is: {minNum}");
+
+    //Sorting the List
+    Console.WriteLine("The sorted list is:");
+    numbers.Sort();
+    foreach (int value in numbers)
+    {
+      Console.WriteLine(value);
+    }
   }
 }
