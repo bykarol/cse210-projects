@@ -1,4 +1,5 @@
 using System;
+using System.Linq; //library that contain math functions
 
 class Program
 {
@@ -10,8 +11,8 @@ class Program
     Console.WriteLine("Enter a a list of numbers, type 0 when finish: ");
     List<int> numbers = new List<int>();
     int number;
-    double sum = 0;
-    int listSize;
+    int sum = 0;
+    double listSize;
     double average;
 
     //loop to append the user entries to the List
@@ -20,7 +21,10 @@ class Program
       Console.Write("Enter a number: ");
       string userEntry = Console.ReadLine();
       number = int.Parse(userEntry);
-      numbers.Add(number);
+      if (number != 0)
+      {
+        numbers.Add(number);
+      }
 
     } while (number != 0);
 
@@ -29,15 +33,31 @@ class Program
     {
       sum += n;
     }
+    // //SUM USING sum() function from LINQ LIBRARY
+    // sum = numbers.Sum();
     Console.WriteLine($"The sum is: {sum}");
 
-    //Average of the numbers of the list
-    listSize = numbers.Count() - 1; //-1 because we not count the cero typed to finish the function
+    //Average of the numbers in the list
+
+    //Average of the numbers of the list using the Linq library
+    listSize = numbers.Count();
     average = sum / listSize;
+    // average = Queryable.Average(numbers.AsQueryable());
     Console.WriteLine($"The average is: {average}");
 
+    //Finding the largest number
+    int maxNum = 0;
 
-
-
+    for (int i = 0; i < listSize; i++)
+    {
+      int num1 = numbers[i];
+      if (maxNum < num1)
+      {
+        maxNum = num1;
+      }
+    }
+    //Finding the largest number with Linq Library
+    // largestNum = numbers.Max();
+    Console.WriteLine($"The largest num is: {maxNum}");
   }
 }
