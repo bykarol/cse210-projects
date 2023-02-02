@@ -10,8 +10,9 @@ public class Journal
   // string author = "";
 
 
-  public void WriteEntry()
+  public void WriteEntry(Entry userEntry)
   {
+    // entries.Add(userEntry);
     prompt.PromptGenerator();
     prompt.DisplayPrompt();
     entry._userInput = Console.ReadLine();
