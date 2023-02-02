@@ -4,23 +4,28 @@ using System.Collections.Generic;
 public class Journal
 {
   List<Entry> entries = new List<Entry>();
-  Entry entry = new Entry();
+  Entry userEntry = new Entry();
   Prompt prompt = new Prompt();
-  DateTime date = DateTime.Now;
+  // Entry entry = new Entry();
+  // DateTime date = DateTime.Now;
   // string author = "";
 
 
-  public void WriteEntry(Entry userEntry)
+  public void WriteEntry()
   {
-    // entries.Add(userEntry);
-    prompt.PromptGenerator();
+    userEntry._question = prompt.PromptGenerator();
     prompt.DisplayPrompt();
-    entry._userInput = Console.ReadLine();
+    userEntry._userInput = Console.ReadLine();
+    this.AddEntry(userEntry);
+  }
+
+  public void AddEntry(Entry input)
+  {
+    entries.Add(input);
   }
 
   public void ReadEntry()
   {
-    entries.Add(entry);
     foreach (Entry entry in entries)
     {
       // This calls the Display method in Entry class

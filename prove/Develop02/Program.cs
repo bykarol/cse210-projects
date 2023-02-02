@@ -6,8 +6,6 @@ class Program
   {
     bool flag = true;
     int menuNum;
-    Prompt prompt = new Prompt();
-    Entry userEntry = new Entry();
     Journal journal = new Journal();
     Console.WriteLine("Welcome to your Journal!");
 
@@ -22,15 +20,11 @@ class Program
 
       if (menuNum == 1)
       {
-        // journal.WriteEntry();
-        userEntry._question = prompt.PromptGenerator();
-        prompt.DisplayPrompt();
-        userEntry._userInput = Console.ReadLine();
+        journal.WriteEntry();
       }
       else if (menuNum == 2)
       {
-        // journal.ReadEntries();
-        userEntry.DisplayEntry();
+        journal.ReadEntry();
       }
       else
       {
@@ -39,9 +33,6 @@ class Program
       }
 
     } while (flag == true);
-
-
-
 
 
   }
