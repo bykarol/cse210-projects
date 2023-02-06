@@ -2,7 +2,6 @@ using System;
 
 public class Prompt
 {
-  string prompt;
   List<string> questions = new List<string>()
   {
     "Who was the most interesting person I interacted with today?",
@@ -13,22 +12,26 @@ public class Prompt
   };
   // //method that can add to the list a new prompt from user
   // public void AddPrompt(string userInput)
+  string prompt;
   // {
   //   questions.Add(userInput);
   // }
 
-  public string PromptGenerator()
+  public string DisplayQuestion()
   {
     Random rndNum = new Random();
     int listSize = questions.Count;
     int rndIndex = rndNum.Next(0, listSize);
     prompt = questions[rndIndex];
+    Console.WriteLine(prompt);
     return prompt;
   }
 
-  public void DisplayPrompt()
+  public string PromptDate()
   {
-    Console.WriteLine(prompt);
+    Console.Write("Fecha: ");
+    string date = Console.ReadLine();
+    return date;
   }
 
 }
