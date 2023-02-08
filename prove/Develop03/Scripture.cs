@@ -7,8 +7,12 @@ class Scripture
     return txt;
   }
 
-  public void HideScripture()
+  public void HideScripture(string txt)
   {
+    Random rndNum = new Random();
+    int txtSize = txt.Length;
+    int rndIndex = rndNum.Next(0, txtSize);
+    // falta escribir el algoritmo que me esconda las palabras
 
   }
 
