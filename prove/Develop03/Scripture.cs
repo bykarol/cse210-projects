@@ -1,52 +1,43 @@
 using System;
 class Scripture
 {
-  public string WriteVerse()
+
+  public void DisplayWholeScripture(string txtRef, string txtVerse)
   {
-    Word txtVerse = new Word();
-    string verse = txtVerse.WriteVerse();
-    return verse;
+    Console.WriteLine(txtRef + " -> " + txtVerse);
   }
-  public string WriteReference()
+
+  public int RandomNumber(int scriptureSize)
   {
-    Reference txtReference = new Reference();
-    string reference = txtReference.WriteReference();
-    return reference;
+    Random rndNum = new Random();
+    int rndIndex = rndNum.Next(0, scriptureSize);
+    return rndIndex;
   }
 
   public void HideScripture(string txtRef, string txtVerse)
   {
     string wholeScripture = txtRef + " " + txtVerse;
     string[] words = wholeScripture.Split(' ');
-    List<string> newWords = new List<string>();
-    string palabra = "";
-    int i = 0;
-    Random rndNum = new Random();
     int listSize = words.Length;
-    int rndIndex = rndNum.Next(0, listSize);
-    foreach (string word in words)
+    int rndIndex = RandomNumber(listSize);
+    List<string> newStringWithHiddenWords = new List<string>();
+    for (int i = 0; i < listSize; i++)
     {
-      if (i == rndIndex)
+      if (rndIndex == i)
       {
-        palabra = words[i];
+        words[i] = new string('*', words[i].Length);
       }
-
-      // Console.WriteLine(words[i]);
-      i++;
-
     }
-    foreach (char item in palabra)
-    {
-      int palabraSize = palabra.Length;
-    }
-    Console.WriteLine();
-
+    DisplayIncompleteScriture(words);
   }
 
-  public void DisplayScripture(string txtRef, string txtVerse)
+  public void DisplayIncompleteScriture(string[] hiddenScripture)
   {
-    Console.WriteLine(txtRef + " -> " + txtVerse);
-
+    foreach (string word in hiddenScripture)
+    {
+      Console.Write(word + " ");
+    }
+    Console.WriteLine();
   }
 
   public bool IsCompletelyHidden()
