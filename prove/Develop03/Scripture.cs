@@ -27,7 +27,10 @@ class Scripture
       {
         words[i] = new string('*', words[i].Length);
       }
+
+      newStringWithHiddenWords.Add(words[i]);
     }
+
     DisplayIncompleteScriture(words);
   }
 
