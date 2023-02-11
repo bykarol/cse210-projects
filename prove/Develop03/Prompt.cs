@@ -1,15 +1,17 @@
+using System;
 class Prompt
 {
-  public string verse;
-  public string reference;
+  private string promptQuestion = "Text the verse without the reference:";
+  private string promptReference = "Enter the reference:";
 
-  public string AskTxt()
+  public void AskVerse()
   {
-    Console.WriteLine("Text the verse without the reference:");
-    verse = Console.ReadLine();
-    Console.WriteLine("Enter the reference:");
-    reference = Console.ReadLine();
-    return reference + " " + verse;
+    Console.WriteLine(promptQuestion);
+  }
+
+  public void AskReference()
+  {
+    Console.WriteLine(promptReference);
   }
 
 }

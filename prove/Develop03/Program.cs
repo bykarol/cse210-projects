@@ -4,24 +4,35 @@ class Program
 {
   static void Main(string[] args)
   {
-    string flag = "";
     Console.WriteLine("Welcome to the Scripture Memorizer!");
     Scripture txt = new Scripture();
-    string verse = txt.WriteScripture();
+    string verse = txt.WriteVerse();
+    string reference = txt.WriteReference();
     Console.Clear();
-    do
+    txt.DisplayScripture(reference, verse);
+    bool flag = true;
+    while (flag)
     {
-      txt.DisplayScripture(verse);
-      Console.WriteLine("Press enter to continue or type 'quit' to finish:");
-      flag = Console.ReadLine();
+      Console.WriteLine("Press enter to continue or type 'q' to finish:");
       ConsoleKeyInfo key = Console.ReadKey();
-      if (Console.ReadKey().Key == ConsoleKey.Enter)
+      // flag = Console.ReadLine();
+      // if (Console.ReadKey().Key == ConsoleKey.Enter)
+      if (key.Key == ConsoleKey.Enter)
       {
-        txt.HideScripture(verse);
+        Console.Clear();
+        txt.HideScripture(reference, verse);
       }
-
-    } while (flag != "quit");
-    Console.WriteLine("See you soon!!");
-
+      else if (key.Key == ConsoleKey.Q)
+      {
+        flag = false;
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.WriteLine();
+        Console.WriteLine("Command not value.");
+      }
+    }
+    Console.WriteLine("See you soon!!!");
   }
 }
