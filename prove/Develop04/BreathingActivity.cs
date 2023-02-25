@@ -6,22 +6,31 @@ class BreathingActivity : Activity
 
   public void runBreathingActivity(int duration)
   {
-    // string[] breath = new String[2] { "Breath in...", "Now breath out..." };
     Console.WriteLine();
+
     DateTime startTime = DateTime.Now;
     DateTime endTime = startTime.AddSeconds(duration);
-
-    Thread.Sleep(3000);
-    DateTime currentTime = DateTime.Now;
-    if (currentTime < endTime)
+    if (startTime < endTime)
     {
-      Console.Write("Breath in...");
-      Thread.Sleep(5000);
-      Console.WriteLine();
-      Console.WriteLine("Now breath out...");
-      Thread.Sleep(5000);
-      Console.WriteLine();
+      while (DateTime.Now < endTime)
+      {
+        Console.Write("Breath in...");
+        this.countDown(5);
+        Console.Write("Now breath out...");
+        this.countDown(5);
+      }
     }
   }
 
+  public void countDown(int startCount)
+  {
+    for (int i = startCount; i > 0; i--)
+    {
+      Console.Write(i);
+      Thread.Sleep(1000);
+      Console.Write("\b \b");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+  }
 }

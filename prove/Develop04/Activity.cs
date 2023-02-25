@@ -15,7 +15,7 @@ class Activity
     this.description = description;
   }
 
-  public int DisplayStartingMessage()
+  public int displayStartingMessage()
   {
     Console.Clear();
     Console.WriteLine("Welcome to the " + activityName);
@@ -27,20 +27,39 @@ class Activity
     return duration;
   }
 
+  public void displayFinalMessage(int duration)
+  {
+    Console.WriteLine("Well done!!");
+    this.displayHoldAnimation();
+    Console.WriteLine();
+    Console.WriteLine("You have completed another " + duration + " seconds of the " + activityName);
+    this.displayHoldAnimation();
+  }
+
+
   public void displayHoldAnimation()
   {
-    string[] characters = new String[4] { "|", "/", "—", "\\" };
-    Console.WriteLine("Get Ready...");
-    for (int j = 0; j < 3; j++)
+    string[] listCharacters = new String[4] { "|", "/", "—", "\\" };
+    for (int j = 0; j < 2; j++)
     {
-      for (int i = 0; i < characters.Length; i++)
+      foreach (string c in listCharacters)
       {
-        Console.Write(characters[i]);
-        Thread.Sleep(600);
+        Console.Write(c);
+        Thread.Sleep(1000);
         Console.Write("\b \b"); // Erase the | character
       }
     }
+  }
 
+  public string randomPrompt(List<string> lists)
+  {
+    Random rndNum = new Random();
+    string prompt;
+
+    int listSize = lists.Count;
+    int rndIndex = rndNum.Next(0, listSize);
+    prompt = lists[rndIndex];
+    return prompt;
   }
 
 
