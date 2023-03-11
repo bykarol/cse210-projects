@@ -1,4 +1,3 @@
-using System;
 public class Square : Shape
 {
   private double _side;
@@ -10,6 +9,6 @@ public class Square : Shape
 
   public override double GetArea()
   {
-    return _side * _side; ;
+    return _side * _side;
   }
 }
