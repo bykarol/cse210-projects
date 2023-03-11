@@ -8,11 +8,6 @@ public class SimpleGoal : Goal
     base.RecordEvent();
   }
 
-  public override void DisplayGoal()
-  {
-    base.DisplayGoal();
-  }
-
   public override bool isComplete(string txt)
   {
     return base.isComplete(txt);

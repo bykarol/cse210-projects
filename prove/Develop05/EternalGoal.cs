@@ -8,10 +8,6 @@ public class EternalGoal : Goal
     base.RecordEvent();
   }
 
-  public override void DisplayGoal()
-  {
-    base.DisplayGoal();
-  }
 
   public override bool isComplete(string txt)
   {

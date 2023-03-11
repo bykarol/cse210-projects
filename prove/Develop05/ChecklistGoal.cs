@@ -13,7 +13,6 @@ public class ChecklistGoal : Goal
 
   public override void DisplayGoal()
   {
-    base.DisplayGoal();
   }
 
   public override bool isComplete(string txt)

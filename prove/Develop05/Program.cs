@@ -9,9 +9,12 @@ class Program
     Console.WriteLine($"{scoreMsg}");
     int mainMenuOp = 0;
     int goalMenuOp = 0;
+    Prompt prompts = new Prompt();
     string goalName;
     string goalDescription;
     int goalPoints;
+    List<string> userIn = new List<string>();
+    List<Goal> goalsList = new List<Goal>();
     do
     {
       Console.WriteLine("Menu Options:");
@@ -45,13 +48,20 @@ class Program
               switch (goalMenuOp)
               {
                 case 1:
-                  SimpleGoal sGoal1 = new SimpleGoal(goalName, goalDescription, goalPoints);
-                  Console.WriteLine("Simple Goal");
-
-                  sGoal1.DisplayGoal(goals);
+                  userIn = prompts.DisplayPrompt();
+                  goalName = userIn[0];
+                  goalDescription = userIn[1];
+                  goalPoints = int.Parse(userIn[2]);
+                  SimpleGoal sgoal1 = new SimpleGoal(goalName, goalDescription, goalPoints);
+                  goalsList.Add(sgoal1);
                   break;
                 case 2:
-                  Console.WriteLine("Eternal Goal");
+                  userIn = prompts.DisplayPrompt();
+                  goalName = userIn[0];
+                  goalDescription = userIn[1];
+                  goalPoints = int.Parse(userIn[2]);
+                  EternalGoal egoal1 = new EternalGoal(goalName, goalDescription, goalPoints);
+                  goalsList.Add(egoal1);
                   break;
                 case 3:
                   Console.WriteLine("Checklist Goal");
@@ -64,8 +74,14 @@ class Program
           } while (goalMenuOp != 4);
           break;
         case 2:
-          Console.WriteLine("Display here List of Goals");
           Console.WriteLine("The goals are:");
+          int i = 1;
+          foreach (Goal goal in goalsList)
+          {
+            Console.Write($"{i}. ");
+            goal.DisplayGoal();
+            i++;
+          }
           break;
         case 3:
           Console.WriteLine("Save Goals into a file");
@@ -78,9 +94,6 @@ class Program
           break;
         case 5:
           Console.WriteLine("Record Event");
-          break;
-        default:
-          Console.WriteLine("Invalid option");
           break;
       }
 
