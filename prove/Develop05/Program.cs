@@ -13,8 +13,12 @@ class Program
     string goalName;
     string goalDescription;
     int goalPoints;
+    int timesComplete;
+    int bonusTime;
     List<string> userIn = new List<string>();
     List<Goal> goalsList = new List<Goal>();
+    FilesHandler file = new FilesHandler();
+    string filename;
     do
     {
       Console.WriteLine("Menu Options:");
@@ -45,26 +49,25 @@ class Program
             Console.Clear(); // TODO PENDIENTE DE ELIMINAR ESTE CONSOLELOG LUEGO DE LAS PRUEBAS
             if (goalMenuOp != 4)
             {
+              userIn = prompts.DisplayPrompt();
+              goalName = userIn[0];
+              goalDescription = userIn[1];
+              goalPoints = int.Parse(userIn[2]);
               switch (goalMenuOp)
               {
                 case 1:
-                  userIn = prompts.DisplayPrompt();
-                  goalName = userIn[0];
-                  goalDescription = userIn[1];
-                  goalPoints = int.Parse(userIn[2]);
                   SimpleGoal sgoal1 = new SimpleGoal(goalName, goalDescription, goalPoints);
                   goalsList.Add(sgoal1);
                   break;
                 case 2:
-                  userIn = prompts.DisplayPrompt();
-                  goalName = userIn[0];
-                  goalDescription = userIn[1];
-                  goalPoints = int.Parse(userIn[2]);
                   EternalGoal egoal1 = new EternalGoal(goalName, goalDescription, goalPoints);
                   goalsList.Add(egoal1);
                   break;
                 case 3:
-                  Console.WriteLine("Checklist Goal");
+                  bonusTime = prompts.BonusTime();
+                  timesComplete = prompts.TimesComplete();
+                  ChecklistGoal cgoal1 = new ChecklistGoal(goalName, goalDescription, goalPoints, timesComplete, bonusTime);
+                  goalsList.Add(cgoal1);
                   break;
                 default:
                   Console.WriteLine("Invalid option");
@@ -85,12 +88,13 @@ class Program
           break;
         case 3:
           Console.WriteLine("Save Goals into a file");
-          Console.Write("What is the filename for the goal file?: ");
-          string filename = Console.ReadLine();
+          filename = prompts.FileName();
+          file.SaveFile(filename);
           break;
         case 4:
-          Console.WriteLine("Load Goals");
-          Console.Write("What is the filename of the goal file?: ");
+          Console.WriteLine("Load Goals from file");
+          filename = prompts.FileName();
+          file.LoadFile(filename);
           break;
         case 5:
           Console.WriteLine("Record Event");
