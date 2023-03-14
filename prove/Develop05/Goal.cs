@@ -12,6 +12,22 @@ public class Goal
     _goalPoints = points;
   }
 
+  public string GetGoalName()
+  {
+    return _goalName;
+  }
+
+  public string GetGoalDescription()
+  {
+    return _goalDescription;
+  }
+
+  public int GetGoalPoints()
+  {
+    return _goalPoints;
+  }
+
+
   public virtual void RecordEvent()
   {
 
@@ -20,6 +36,11 @@ public class Goal
   public virtual void DisplayGoal()
   {
     Console.WriteLine($"[ ] {_goalName} ({_goalDescription})");
+  }
+
+  public virtual string SaveGoal()
+  {
+    return ($"{_goalName},{_goalDescription},{_goalPoints}");
   }
 
   public virtual bool isComplete(string txt)

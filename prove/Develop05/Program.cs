@@ -16,9 +16,10 @@ class Program
     int timesComplete;
     int bonusTime;
     List<string> userIn = new List<string>();
+    // List<string> goalsList = new List<string>();
     List<Goal> goalsList = new List<Goal>();
-    FilesHandler file = new FilesHandler();
-    string filename;
+    string fileName = "goals.text";
+    FilesHandler file = new FilesHandler(fileName);
     do
     {
       Console.WriteLine("Menu Options:");
@@ -88,13 +89,13 @@ class Program
           break;
         case 3:
           Console.WriteLine("Save Goals into a file");
-          filename = prompts.FileName();
-          file.SaveFile(filename);
+          fileName = prompts.FileName();
+          file.SaveFile(goalsList);
           break;
         case 4:
-          Console.WriteLine("Load Goals from file");
-          filename = prompts.FileName();
-          file.LoadFile(filename);
+          // Console.WriteLine("Load Goals from file");
+          // fileName = prompts.FileName();
+          // goalsList = file.LoadFile();
           break;
         case 5:
           Console.WriteLine("Record Event");
